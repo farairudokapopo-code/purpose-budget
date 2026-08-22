@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purpose Budget</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Purpose Budget</h1>
+            <p>Envelope System &amp; Percentage Splitter</p>
+        </header>
+
+        <!-- Income Input Section -->
+        <section class="card">
+            <h2>Log New Income</h2>
+            <div class="input-group">
+                <label for="incomeInput">Total Income ($)</label>
+                <input type="number" id="incomeInput" placeholder="e.g., 130" step="0.01" min="0">
+            </div>
+            <button type="button" id="splitBtn">Calculate &amp; Distribute</button>
+            <p id="splitMessage" class="feedback-message"></p>
+        </section>
+
+        <!-- Account Balances Display -->
+        <section class="card">
+            <div class="card-header-row">
+                <h2>Account Balances</h2>
+                <button type="button" id="resetBtn" class="text-button">Reset All</button>
+            </div>
+            <div id="accountsGrid" class="grid">
+                <!-- Dynamically injected account cards will appear here -->
+            </div>
+        </section>
+
+        <!-- Percentage Configuration Section -->
+        <section class="card">
+            <h2>Allocation Rules</h2>
+            <p class="card-subtext">Drag each slider to set where every deposit goes. 5% steps keep things landing on a clean 100.</p>
+
+            <div class="slider-row">
+                <div class="slider-label">
+                    <label for="tithePct">Tithe</label>
+                    <span class="slider-value" id="titheValue">10%</span>
+                </div>
+                <input type="range" id="tithePct" min="0" max="100" step="5" value="10">
+            </div>
+
+            <div class="slider-row">
+                <div class="slider-label">
+                    <label for="billsPct">Bills</label>
+                    <span class="slider-value" id="billsValue">50%</span>
+                </div>
+                <input type="range" id="billsPct" min="0" max="100" step="5" value="50">
+            </div>
+
+            <div class="slider-row">
+                <div class="slider-label">
+                    <label for="freedomPct">Freedom Fund</label>
+                    <span class="slider-value" id="freedomValue">10%</span>
+                </div>
+                <input type="range" id="freedomPct" min="0" max="100" step="5" value="10">
+            </div>
+
+            <div class="slider-row">
+                <div class="slider-label">
+                    <label for="funPct">Fun</label>
+                    <span class="slider-value" id="funValue">10%</span>
+                </div>
+                <input type="range" id="funPct" min="0" max="100" step="5" value="10">
+            </div>
+
+            <div class="slider-row">
+                <div class="slider-label">
+                    <label for="educatePct">Education</label>
+                    <span class="slider-value" id="educateValue">10%</span>
+                </div>
+                <input type="range" id="educatePct" min="0" max="100" step="5" value="10">
+            </div>
+
+            <div class="slider-row">
+                <div class="slider-label">
+                    <label for="savePct">Savings</label>
+                    <span class="slider-value" id="saveValue">10%</span>
+                </div>
+                <input type="range" id="savePct" min="0" max="100" step="5" value="10">
+            </div>
+
+            <div class="allocation-bar" id="allocationBar"></div>
+
+            <div class="total-row">
+                <span>Total Allocated</span>
+                <span id="totalDisplay">100%</span>
+            </div>
+
+            <button type="button" id="saveSettingsBtn">Update Rules</button>
+            <p id="rulesMessage" class="feedback-message"></p>
+        </section>
+
+        <!-- Income History -->
+        <section class="card">
+            <h2>Income History</h2>
+            <ul id="historyList" class="history-list">
+                <li class="empty-state">No income logged yet.</li>
+            </ul>
+        </section>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
